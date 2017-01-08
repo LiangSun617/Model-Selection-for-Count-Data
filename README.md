@@ -79,7 +79,7 @@ As mentioned in the first example, negative binomial works better with over-disp
 
 Then do we really need zero-inflated model here?
 
-No. The Vuong test I performed was insignificant, which suggested that regular negative binomial regression is preferred over zero-inflated one. Paul Allison also suggests that zero-inflated negative binomial regression is not always necessary, and the difference in model fitness between these two is also trivial.
+No. The Vuong test I performed was insignificant, which suggested that regular negative binomial regression is preferred over zero-inflated one. Paul Allison also suggests that zero-inflated negative binomial regression is not always necessary, and the difference in model fitness between these two is also trivial ([Paul Allison's article](http://statisticalhorizons.com/zero-inflated-models)).
 
 Fortunately, the negative binomial regression model could work with both year and country fixed effects.
 
