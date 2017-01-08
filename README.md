@@ -1,7 +1,7 @@
 
 ### Model Selection for Count Data
 
-#### Liang Sun 
+#### Liang Sun
 #### December 17, 2016
 
 *This is a summary of what I found when I tried to select appropriate statistical models that fit count data for my dissertation.*
@@ -19,23 +19,23 @@ The first example is about the number of international students in the United St
 
             Figure 1. Histogram of the number of international students before and after transformation
 
-![png](1.png)
+![png](/image/1.png)
 
 Fortunately, it turns into a quite normal distribution after the natural logarithm transformation, and I could simply use OLS. Out of curiosity, I also checked how Poisson regression would differ from OLS:
 
-![png](2.png)
+![png](/image/2.png)
 
-![png](3.png)
+![png](/image/3.png)
 
 In the Poisson model, the dependent variable is “the number of international students” instead of its natural logarithm form because it has to be integers rather than decimals in Poisson model. The Poisson regression command already calculates the Poisson formula on its own where the relationship between the natural logarithm of dependent variable and independent variables is linear, so there is no need to transform the dependent variable.
 
 In comparison of the results of OLS and Poisson regression, the significance and coefficients of some variables seem to differ vastly. The main reason, I think, is that Poisson regression works well only when the dependent variable has equal or almost equal mean and variance, while my data have a much larger standard deviation (12449.35) than mean (3697.632), which is called over-dispersion.
 
-![png](4.png)
+![png](/image/4.png)
 
 Negative binomial regression is usually for modeling over-dispersed count outcome variables, so I turned to the negative binomial regression:
 
-![png](5.png)
+![png](/image/5.png)
 
 In spite of a couple of variables which have different significance and directions of coefficients, the negative binomial regression models gives closer results to the linear regression’s. However, it seems that negative binomial regression produces reasonable result here, but how can we decide which is better, OLS or negative binomial regreesion?
 
@@ -53,7 +53,7 @@ The dependent variable here, unlike the one in the first example, cannot be norm
 
     Figure 2. Histogram of number of collaborative publications before and after transformation
 
-![png](6.png)
+![png](/image/6.png)
 
 Clearly, it is a zero-inflated distribution; only the values larger than 0 are approximately normally distributed. Apparently, OLS should not be used here, but can I apply those probability-based count models here? I boldly think, yes. Although it is not a typical probability case, it can be treated so if we consider the number of collaborative publications among total number of publication in a country is by chance.
 
@@ -75,7 +75,7 @@ Therefore, I turned to negative binomial regression models.
 
 As mentioned in the first example, negative binomial works better with over-dispersed data than Poisson regression. The dependent variable, number of collaborative publications, has much larger variance than mean.
 
-![png](7.png)
+![png](/image/7.png)
 
 Then do we really need zero-inflated model here?
 
@@ -83,7 +83,7 @@ No. The Vuong test I performed was insignificant, which suggested that regular n
 
 Fortunately, the negative binomial regression model could work with both year and country fixed effects.
 
-![png](8.png)
+![png](/image/8.png)
 
 Finally, I could decide negative binomial regression model is the best fit for my data.
 
